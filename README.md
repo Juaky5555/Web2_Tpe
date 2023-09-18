@@ -1,11 +1,11 @@
 # Web2_Tpe
 
 Integrantes: 
-Magiorano Aguilar, Joaquin
-Slas Costa, Luna Bianca
+Magiorano Aguilar, Joaquin.
+Salas Costa, Luna Bianca.
 
 Tematica:
-Veterinaria
+Veterinaria.
 
 Descripcion:
 Realizaremos una veterinaria que ofrece servicios de adopcion de mascotas.
