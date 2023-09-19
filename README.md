@@ -1,8 +1,8 @@
 # Web2_Tpe
 
 Integrantes: 
-Magiorano Aguilar, Joaquin.
-Salas Costa, Luna Bianca.
+Magiorano Aguilar, Joaquin. joacopirovano@gmail.com
+Salas Costa, Luna Bianca. lsalascosta@alumnos.exa.unicen.edu.ar
 
 Tematica:
 Veterinaria.
