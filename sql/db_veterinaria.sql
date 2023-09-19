@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-09-2023 a las 18:20:07
+-- Tiempo de generación: 19-09-2023 a las 22:27:56
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -24,20 +24,20 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `especie`
+-- Estructura de tabla para la tabla `especies`
 --
 
-CREATE TABLE `especie` (
+CREATE TABLE `especies` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(25) NOT NULL,
+  `especie` varchar(25) NOT NULL,
   `descripcion` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `especie`
+-- Volcado de datos para la tabla `especies`
 --
 
-INSERT INTO `especie` (`id`, `nombre`, `descripcion`) VALUES
+INSERT INTO `especies` (`id`, `especie`, `descripcion`) VALUES
 (1, 'Perros', 'Mamífero doméstico de la familia de los cánidos, de tamaño, forma y pelaje muy diversos, según las razas, que tiene olfato muy fino y es inteligente y muy leal a su dueño. La inteligencia canina se refiere a la habilidad de un perro de procesar la información que recibe a través de sus sentidos para aprender, adaptarse y resolver problemas.\r\n'),
 (2, 'Gatos', 'Posee un pelaje suave y lanoso con una apariencia brillante, mantenida con una constante limpieza con la lengua. Su cuerpo es flexible, ligero, musculoso y compacto. Las patas delanteras tienen cinco dígitos y las traseras cuatro. Las garras son retráctiles, largas, afiladas, muy curvadas y comprimidas lateralmente.'),
 (3, 'Roedores', 'La mayoría de los roedores tienen patas cortas, son cuadrúpedos (se mueven a cuatro patas) y son relativamente pequeños. Su característica común principal son los dos incisivos, de gran tamaño y crecimiento continuo, situados en el maxilar inferior y superior, y que solo están cubiertos de esmalte en la parte frontal.');
@@ -45,24 +45,24 @@ INSERT INTO `especie` (`id`, `nombre`, `descripcion`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `individuo`
+-- Estructura de tabla para la tabla `individuos`
 --
 
-CREATE TABLE `individuo` (
+CREATE TABLE `individuos` (
   `id` int(11) NOT NULL,
   `nombre` varchar(25) NOT NULL,
   `raza` varchar(25) NOT NULL,
   `edad` int(11) NOT NULL,
   `color` varchar(25) NOT NULL,
-  `descripcion` text NOT NULL,
+  `personalidad` text NOT NULL,
   `fk_id_especie` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `individuo`
+-- Volcado de datos para la tabla `individuos`
 --
 
-INSERT INTO `individuo` (`id`, `nombre`, `raza`, `edad`, `color`, `descripcion`, `fk_id_especie`) VALUES
+INSERT INTO `individuos` (`id`, `nombre`, `raza`, `edad`, `color`, `personalidad`, `fk_id_especie`) VALUES
 (2, 'Chicho', 'Bobtail', 8, 'Blanco y Gris', 'Los bobtails, tan alegres y extrovertidos, son un compañero muy popular para las familias. Suelen ser de naturaleza adorable, aunque pueden ponerse nerviosos cuando juegan, por lo que deberás tener cuidado cuando haya niños pequeños cerca. Se unirán a cualquier actividad con mucho entusiasmo.', 1),
 (3, 'Flopi', 'Akita', 5, 'Marron', 'Flopi es dócil, activa e independiente. Su cualidad más admirable es la lealtad, se siente muy apegada a su dueño y es desconfiada con los extraños, actitud que le hace ser muy buena guardiana.', 1),
 (4, 'Taiga', 'Bengali', 2, 'Marron y Negro', 'Taiga muestra seguridad y confianza en sí misma y, además, es cariñosa. Es muy juguetona por naturaleza y rebosa energía. Es lista y parece que mira todo lo que la rodea, incluido al perro de la familia.', 2),
@@ -75,15 +75,15 @@ INSERT INTO `individuo` (`id`, `nombre`, `raza`, `edad`, `color`, `descripcion`,
 --
 
 --
--- Indices de la tabla `especie`
+-- Indices de la tabla `especies`
 --
-ALTER TABLE `especie`
+ALTER TABLE `especies`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `individuo`
+-- Indices de la tabla `individuos`
 --
-ALTER TABLE `individuo`
+ALTER TABLE `individuos`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_id_especie` (`fk_id_especie`);
 
@@ -92,15 +92,15 @@ ALTER TABLE `individuo`
 --
 
 --
--- AUTO_INCREMENT de la tabla `especie`
+-- AUTO_INCREMENT de la tabla `especies`
 --
-ALTER TABLE `especie`
+ALTER TABLE `especies`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT de la tabla `individuo`
+-- AUTO_INCREMENT de la tabla `individuos`
 --
-ALTER TABLE `individuo`
+ALTER TABLE `individuos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
@@ -108,10 +108,10 @@ ALTER TABLE `individuo`
 --
 
 --
--- Filtros para la tabla `individuo`
+-- Filtros para la tabla `individuos`
 --
-ALTER TABLE `individuo`
-  ADD CONSTRAINT `fk_id_especie` FOREIGN KEY (`fk_id_especie`) REFERENCES `especie` (`id`);
+ALTER TABLE `individuos`
+  ADD CONSTRAINT `fk_id_especie` FOREIGN KEY (`fk_id_especie`) REFERENCES `especies` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
