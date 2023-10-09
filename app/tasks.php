@@ -17,12 +17,12 @@ function mostrarIndividuos() {
                 <h6>Edad (años): <?php echo $individuo->edad ?></h6>
             </div>
             <div class="actions">
-                <a href="animal/<?php echo $individuo->id?>" type="button" class='btn btn-success ml-auto'>Ver mas</a> <?php } ?>
+                <a href="individuo/<?php echo $individuo->id?>" type="button" class='btn btn-success ml-auto'>Ver mas</a> <?php } ?>
             </div>
         </li>
 <?php 
     require 'templates/footer.php';
-} 
+}
 ?>
     </ul>
 <?php
@@ -50,7 +50,7 @@ function eliminarIndividuo($id) {
 }
 
 
-function mostrarMas($id) {
+function mostrarIndividuoEnDetalle($id) {
     include_once 'templates/header.php';
     $animal = obtenerIndividuoPorID($id);
   ?>
@@ -58,21 +58,12 @@ function mostrarMas($id) {
     <main class="container mt-5">
     <section>
         <h1 class="mb-5">Nombre: <?php echo $animal->nombre ?></h1>
+        <img src="img/<?php echo $animal->foto?>" alt="<?php echo $animal->foto?>">
         <?php
-        switch ($animal->especie) {
-            case 'Perro':
-                echo '<img src="img/perro1.jpg" alt="">';
-                break;
-            case 'Gato':
-                echo '<img src="img/gato1.jpg" alt="">';
-                break;
-            case 'Roedor':
-                echo '<img src="img/roedor1.jpg" alt="">';
-                break;
-            default: 
-                echo "No hay foto";
-                break;
-        } ?>
+        if ($animal->foto == null) {
+            echo "<h3>No hay una foto disponible</h3>";
+        }
+        ?>
         <p class="lead mt-3">Especie: <?php echo $animal->especie ?></p>
         <p class="lead mt-3">Raza: <?php echo $animal->raza ?></p>
         <p class="lead mt-3">Edad (años): <?php echo $animal->edad ?></p>

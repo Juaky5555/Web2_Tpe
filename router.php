@@ -25,8 +25,8 @@ switch ($params[0]) {
     case 'eliminar':
         eliminarIndividuo($params[1]);
         break;
-    case 'animal':
-        mostrarMas($params[1]);
+    case 'individuo':
+        mostrarIndividuoEnDetalle($params[1]);
         break;
     default: 
         echo "404 Page Not Found";
