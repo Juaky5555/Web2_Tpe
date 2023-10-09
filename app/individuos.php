@@ -2,7 +2,7 @@
 require_once './app/db.php';
 
 function mostrarIndividuos() {
-    require 'templates/header.php';
+    require 'templates/header.phtml';
 
     $individuos = obtenerIndividuos();
     ?>
@@ -21,7 +21,7 @@ function mostrarIndividuos() {
             </div>
         </li>
 <?php 
-    require 'templates/footer.php';
+    require 'templates/footer.phtml';
 }
 ?>
     </ul>
@@ -51,7 +51,7 @@ function eliminarIndividuo($id) {
 
 
 function mostrarIndividuoEnDetalle($id) {
-    include_once 'templates/header.php';
+    include_once 'templates/header.phtml';
     $animal = obtenerIndividuoPorID($id);
   ?>
 
@@ -72,5 +72,5 @@ function mostrarIndividuoEnDetalle($id) {
     </section>
     </main>
 
-    <?php include_once 'templates/footer.php';
+    <?php include_once 'templates/footer.phtml';
 }
