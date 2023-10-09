@@ -11,7 +11,8 @@ if (!empty( $_GET['action'])) {
 // mostrar    ->    mostrarIndividuos();
 // agregar   ->    añadirIndividuo();
 // eliminar/:id  -> eliminarIndividuo($id);
-// individuo/:id -> mostrarEnDetalle($id)
+// individuo/:id -> mostrarEnDetalle($id);
+// mostrarParaModificar/:id ->mostrarIndividuoModificar($id);
 
 $params = explode('/', $action);
 
@@ -27,6 +28,12 @@ switch ($params[0]) {
         break;
     case 'individuo':
         mostrarIndividuoEnDetalle($params[1]);
+        break;
+    case 'mostrarParaModificar':
+        mostrarIndividuoModificar($params[1]);
+        break;
+    case 'modificar':
+        modificarDatos();
         break;
     default: 
         echo "404 Page Not Found";
