@@ -14,10 +14,10 @@ function obtenerIndividuos() {
     return $tasks;
 }
 
-function insertarIndividuo($nombre, $raza, $edad, $color, $personalidad) {
+function insertarIndividuo($nombre, $raza, $edad, $color, $personalidad, $fk_id_especie) {
     $db = obtenerConexion();
-    $query = $db->prepare('INSERT INTO individuos (nombre, raza, edad, color, personalidad) VALUES(?,?,?,?,?)');
-    $query->execute([$nombre, $raza, $edad, $color, $personalidad]);
+    $query = $db->prepare('INSERT INTO individuos (nombre, raza, edad, color, personalidad, fk_id_especie) VALUES(?,?,?,?,?,?)');
+    $query->execute([$nombre, $raza, $edad, $color, $personalidad, $fk_id_especie]);
     return $db->lastInsertId();
 }
 
@@ -33,4 +33,9 @@ function obtenerIndividuoPorID($id) {
     $query->execute([$id]);
     $individuo = $query->fetch(PDO::FETCH_OBJ);
     return $individuo;
+}
+function modificarIndividuo($id, $nombre, $raza, $edad, $color, $personalidad, $fk_id_especie){
+    $db = obtenerConexion();
+    $query = $db->prepare('UPDATE individuos SET nombre = ?, raza = ?, edad = ?, color = ?, personalidad = ?, fk_id_especie = ? WHERE id = ?');
+    $query->execute([$nombre, $raza, $edad, $color, $personalidad, $fk_id_especie, $id]);
 }
