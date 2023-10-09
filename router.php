@@ -1,5 +1,5 @@
 <?php
-require_once 'app/tasks.php';
+require_once 'app/individuos.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
