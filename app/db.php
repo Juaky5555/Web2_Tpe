@@ -10,14 +10,14 @@ function obtenerIndividuos() {
     $query = $db->prepare('SELECT * FROM individuos JOIN especies ON individuos.fk_id_especie = especies.id_especie');
     $query->execute();
     
-    $tasks = $query->fetchAll(PDO::FETCH_OBJ);
-    return $tasks;
+    $individuo = $query->fetchAll(PDO::FETCH_OBJ);
+    return $individuo;
 }
 
-function insertarIndividuo($nombre, $raza, $edad, $color, $personalidad, $fk_id_especie) {
+function insertarIndividuo($nombre, $raza, $edad, $color, $personalidad, $fk_id_especie, $imagen) {
     $db = obtenerConexion();
-    $query = $db->prepare('INSERT INTO individuos (nombre, raza, edad, color, personalidad, fk_id_especie) VALUES(?,?,?,?,?,?)');
-    $query->execute([$nombre, $raza, $edad, $color, $personalidad, $fk_id_especie]);
+    $query = $db->prepare('INSERT INTO individuos (nombre, raza, edad, color, personalidad, fk_id_especie, imagen) VALUES(?,?,?,?,?,?,?)');
+    $query->execute([$nombre, $raza, $edad, $color, $personalidad, $fk_id_especie, $imagen]);
     return $db->lastInsertId();
 }
 
