@@ -21,7 +21,7 @@ function mostrarIndividuos() {
             <div class="actions">
                 <a href="individuo/<?php echo $individuo->id?>" type="button" class='btn btn-success ml-auto'>Ver mas</a> 
                 <a href="eliminar/<?php echo $individuo->id ?>" type="button" class='btn btn-danger ml-auto'>Borrar</a> 
-                <a href="mostrarParaModificar/<?php echo $individuo->id ?>" type="button" class='btn btn-secondary ml-auto'>modificar</a> 
+                <a href="mostrarParaModificar/<?php echo $individuo->id ?>" type="button" class='btn btn-secondary ml-auto'>Modificar</a> 
                 <?php } ?>
             </div>
         </li>
@@ -33,20 +33,29 @@ function mostrarIndividuos() {
 <?php
 
 function añadirIndividuo() {
-    // ACA HABRIA QUE HACER UNA VALIDACION DE LOS DATOS, PARA CHEQUEAR QUE LOS CAMPOS NO VENGAN VACIOS O CON DATOS ERRONEOS.
-    $nombre = $_POST['nombre'];
-    $fk_id_especie = $_POST['especie'];
-    $raza = $_POST['raza'];
-    $edad = $_POST['edad'];
-    $color = $_POST['color'];
-    $personalidad = $_POST['personalidad'];
+    $id = 0;
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        $nombre = $_POST['nombre'];
+        $fk_id_especie = $_POST['especie'];
+        $raza = $_POST['raza'];
+        $edad = $_POST['edad'];
+        $color = $_POST['color'];
+        $personalidad = $_POST['personalidad'];
+        if (isset($_FILES['imagen']) && !empty($_FILES['imagen']['tmp_name'])){
+            $imagen = file_get_contents($_FILES['imagen']['tmp_name']);
+        }
+    }
 
-    $id = insertarIndividuo($nombre, $raza, $edad, $color, $personalidad, $fk_id_especie);
+    if (empty($nombre) || empty($edad) || empty($raza) || empty($fk_id_especie) || empty($color)) {
+        echo "<h1>Faltan campos a completar</h1>";
+    } else {
+        $id = insertarIndividuo($nombre, $raza, $edad, $color, $personalidad, $fk_id_especie, $imagen);
+    }
 
-    if ($id) {
+    if ($id != 0) {
         header('Location: ' . BASE_URL);
     } else {
-        echo "Error al insertar al individuo";
+        echo "<h1>Error al insertar al individuo</h1>";
     }
 }
 
@@ -64,11 +73,14 @@ function mostrarIndividuoEnDetalle($id) {
     <main class="container mt-5">
     <section>
         <h1 class="mb-5">Nombre: <?php echo $animal->nombre ?></h1>
-        <img src="img/<?php echo $animal->foto?>" alt="<?php echo $animal->foto?>">
         <?php
-        if ($animal->foto == null) {
-            echo "<h3>No hay una foto disponible</h3>";
-        }
+            if ($animal->imagen != null) {
+                ?>
+                <img src="data:image/jpg;base64,<?php echo base64_encode($animal->imagen);?>" alt="">
+                <?php
+            } else {
+                echo "<h3>No hay una foto disponible</h3>";
+            }
         ?>
         <p class="lead mt-3">Especie: <?php echo $animal->especie ?></p>
         <p class="lead mt-3">Raza: <?php echo $animal->raza ?></p>
@@ -86,13 +98,13 @@ function mostrarIndividuoModificar($id){
     ?>
     <form action="modificar" method="POST" class="my-4">
         <div class="oculto">
-            <input type="number" name="id" value="<?php echo $animal->id?>">
+            <input type="number" name="id" value="<?php echo $animal->id?>"/>
         </div>
         <div class="row">
             <div class="col-6">
                 <div class="form-group">
                     <label>Nombre</label>
-                    <input required name="nombre" type="text" class="form-control" value="<?php echo $animal->nombre?>">
+                    <input required name="nombre" type="text" class="form-control" value="<?php echo $animal->nombre?>"/>
                 </div>
             </div>
             <div class="col-4">
@@ -109,7 +121,7 @@ function mostrarIndividuoModificar($id){
             <div class="col-2">
                 <div class="form-group">
                     <label>Edad (en años)</label>
-                    <input required type="number" name="edad" class="form-control" min=0 max=100 value="<?php echo $animal->edad?>">
+                    <input required type="number" name="edad" class="form-control" min=0 max=100 step="0.1" value="<?php echo $animal->edad?>"/>
                 </div>
             </div>
         </div>
@@ -117,13 +129,13 @@ function mostrarIndividuoModificar($id){
             <div class="col-6">
                 <div class="form-group">
                     <label>Raza</label>
-                    <input required name="raza" type="text" class="form-control" value="<?php echo $animal->raza?>">
+                    <input required name="raza" type="text" class="form-control" value="<?php echo $animal->raza?>"/>
                 </div>
             </div>
             <div class="col-6">
                 <div class="form-group">
                     <label>Color</label>
-                    <input required name="color" type="text" class="form-control" value="<?php echo $animal->color?>">
+                    <input required name="color" type="text" class="form-control" value="<?php echo $animal->color?>"/>
                 </div>
             </div>
         </div>
