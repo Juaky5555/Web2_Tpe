@@ -1,0 +1,27 @@
+<?php include_once 'templates/header.phtml';?>
+
+<form action="modificarEspecies" method="POST" class="my-4">
+    <div class="oculto">
+        <input type="number" name="id" value="<?= $especie->id?>"/>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <label>Especie</label>
+                <input required name="nombre" type="text" class="form-control" value="<?= $especie->especie?>"/>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <label>Descripcion</label>
+                <input required name="raza" type="text" class="form-control" value="<?= $especie->descripcion?>"/>
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-2">Modificar</button>
+</form>
+  
+<?php include_once 'templates/footer.phtml';
