@@ -32,7 +32,7 @@ function mostrarIndividuos() {
     </ul>
 <?php
 
-function añadirIndividuo() {
+function sumarIndividuo() {
     $id = 0;
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $nombre = $_POST['nombre'];
@@ -85,13 +85,14 @@ function mostrarIndividuoEnDetalle($id) {
         <p class="lead mt-3">Especie: <?php echo $animal->especie ?></p>
         <p class="lead mt-3">Raza: <?php echo $animal->raza ?></p>
         <p class="lead mt-3">Edad (años): <?php echo $animal->edad ?></p>
-        <p class="lead mt-3">Descripcion de la especie: <?php echo $animal->descripcion ?></p>
         <p class="lead mt-3">Descripcion del individuo: <?php echo $animal->personalidad ?></p>
+        <p class="lead mt-3">Descripcion de la especie: <?php echo $animal->descripcion ?></p>
     </section>
     </main>
 
     <?php include_once 'templates/footer.phtml';
 }
+
 function mostrarIndividuoModificar($id){
     include_once 'templates/header.phtml';
     $animal = obtenerIndividuoPorID($id);
