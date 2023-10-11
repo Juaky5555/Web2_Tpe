@@ -6,7 +6,7 @@ function obtenerConexion() {
 
 function obtenerIndividuos() {
     $db = obtenerConexion();
-    
+
     $query = $db->prepare('SELECT * FROM individuos JOIN especies ON individuos.fk_id_especie = especies.id_especie');
     $query->execute();
     
@@ -38,4 +38,14 @@ function modificarIndividuo($id, $nombre, $raza, $edad, $color, $personalidad, $
     $db = obtenerConexion();
     $query = $db->prepare('UPDATE individuos SET nombre = ?, raza = ?, edad = ?, color = ?, personalidad = ?, fk_id_especie = ? WHERE id = ?');
     $query->execute([$nombre, $raza, $edad, $color, $personalidad, $fk_id_especie, $id]);
+}
+
+function obtenerEspecies(){
+    $db = obtenerConexion();
+    
+    $query = $db->prepare('SELECT * FROM especies');
+    $query->execute();
+    
+    $especie = $query->fetchAll(PDO::FETCH_OBJ);
+    return $especie;
 }

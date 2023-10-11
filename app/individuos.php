@@ -32,7 +32,7 @@ function mostrarIndividuos() {
     </ul>
 <?php
 
-function añadirIndividuo() {
+function sumarIndividuo() {
     $id = 0;
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $nombre = $_POST['nombre'];
