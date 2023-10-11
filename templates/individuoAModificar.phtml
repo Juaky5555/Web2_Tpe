@@ -1,0 +1,56 @@
+<?php include_once 'templates/header.phtml';?>
+
+<form action="modificar" method="POST" class="my-4">
+    <div class="oculto">
+        <input type="number" name="id" value="<?= $animal->id?>"/>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <label>Nombre</label>
+                <input required name="nombre" type="text" class="form-control" value="<?= $animal->nombre?>"/>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <label>Especie</label>
+                <select required name="especie" class="form-control">
+                    <option value="" selected disabled >Seleccione una opcion</option>
+                    <option value="1">Perro</option>
+                    <option value="2">Gato</option>
+                    <option value="3">Roedor</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group">
+                <label>Edad (en años)</label>
+                <input required type="number" name="edad" class="form-control" min=0 max=100 step="0.1" value="<?= $animal->edad?>"/>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <label>Raza</label>
+                <input required name="raza" type="text" class="form-control" value="<?= $animal->raza?>"/>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label>Color</label>
+                <input required name="color" type="text" class="form-control" value="<?= $animal->color?>"/>
+            </div>
+        </div>
+    </div>
+    <div class=col-12>
+        <div class="form-group">
+            <label>Personalidad</label>
+            <textarea name="personalidad" class="form-control" rows="3"><?= $animal->personalidad?></textarea>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-2">Modificar</button>
+</form>
+  
+<?php include_once 'templates/footer.phtml';
