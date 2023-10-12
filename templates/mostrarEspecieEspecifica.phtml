@@ -1,0 +1,15 @@
+<?php require 'templates/header.phtml'; ?>
+
+<main class="container mt-5">
+    <section>
+        <h1 class="mb-5">Especie: <?= $especie->nombre ?></h1>
+
+        <p class="lead mt-3">Nombre: <?= $especie->especie ?></p>
+        <p class="lead mt-3">Raza: <?= $especie->raza ?></p>
+        <p class="lead mt-3">Edad (años): <?= $especie->edad ?></p>
+        <p class="lead mt-3">Descripcion del individuo: <?= $especie->personalidad ?></p>
+        <p class="lead mt-3">Descripcion de la especie: <?= $especie->descripcion ?></p>
+    </section>
+</main>
+
+<?php require 'templates/footer.phtml'; ?>

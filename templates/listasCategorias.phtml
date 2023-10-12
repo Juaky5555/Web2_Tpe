@@ -1,0 +1,22 @@
+<?php 
+    require 'templates/header.phtml';
+    require 'templates/form_subida_categorias.phtml'; 
+?>
+
+<ul class="list-group">
+<?php foreach($categorias as $categoria) : ?>
+    <li class="list-group-item item-task">
+        <div>
+            <h5><b>Especie: <?= $categoria->especie ?></b></h5> 
+            <h6>Descripcion: <?= $categoria->descripcion ?></h6>
+        </div>
+        <div class="actions">
+            <!-- <a href="listarPorCategoria/<?= $categoria->id_especie?>" type="button" class='btn btn-success ml-auto'>Ver mas</a>  -->
+            <a href="eliminarEspecies/<?= $categoria->id_especie ?>" type="button" class='btn btn-danger ml-auto'>Borrar</a> 
+            <a href="mostrarParaModificarEspecies/<?= $categoria->id_especie ?>" type="button" class='btn btn-secondary ml-auto'>Modificar</a>
+        </div>
+    </li>
+<?php endforeach ?>
+</ul>
+
+<?php require 'templates/footer.phtml'; ?>

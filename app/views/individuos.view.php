@@ -2,7 +2,7 @@
 
 class vistaIndividuos{
     public function mostrarIndividuos($individuos){
-        $cuenta = count($individuos);
+       // $cuenta = count($individuos);
 
         require 'templates/listaIndividuos.phtml';
     }

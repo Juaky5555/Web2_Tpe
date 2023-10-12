@@ -1,6 +1,6 @@
 <?php 
     require 'templates/header.phtml';
-    require 'templates/form_subida.phtml'; 
+    require 'templates/form_subida_individuos.phtml'; 
 ?>
 
 <ul class="list-group">
@@ -13,9 +13,9 @@
             <h6>Edad (años): <?= $individuo->edad ?></h6>
         </div>
         <div class="actions">
-            <a href="mostrar/<?= $individuo->id?>" type="button" class='btn btn-success ml-auto'>Ver mas</a> 
-            <a href="eliminar/<?= $individuo->id ?>" type="button" class='btn btn-danger ml-auto'>Borrar</a> 
-            <a href="mostrarParaModificar/<?= $individuo->id ?>" type="button" class='btn btn-secondary ml-auto'>Modificar</a>
+            <a href="mostrarIndividuo/<?= $individuo->id?>" type="button" class='btn btn-success ml-auto'>Ver mas</a> 
+            <a href="eliminarIndividuo/<?= $individuo->id ?>" type="button" class='btn btn-danger ml-auto'>Borrar</a> 
+            <a href="mostrarParaModificarIndividuo/<?= $individuo->id ?>" type="button" class='btn btn-secondary ml-auto'>Modificar</a>
         </div>
     </li>
 <?php endforeach ?>
