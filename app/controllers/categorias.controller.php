@@ -1,6 +1,7 @@
 <?php
 include_once './app/views/categorias.view.php';
 include_once './app/models/categorias.model.php';
+require_once './app/helpers/autenticacion.helper.php';
 
 class categoriasController{ 
     private $modelo;
@@ -8,18 +9,15 @@ class categoriasController{
 
     
     public function __construct() {
-        //AuthHelper::verify();          //ACOMODAR JUNTO AL REQUIRE
+        AutenticacionHelper::verify();   
                                                     
         $this->modelo = new modeloCategorias();
         $this->vista = new vistaCategorias();
     }
 
     public function mostrarCategorias(){
-        //ponerle distinto nombre
-        // obtengo tareas del controlador
         $especie = $this->modelo->obtenerCategorias();
         
-        // muestro las tareas desde la vista
         $this->vista->mostrarCategorias($especie);
     }
 

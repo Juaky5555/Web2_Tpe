@@ -1,24 +1,21 @@
 <?php
 require_once './app/models/individuos.model.php';
 require_once './app/views/individuos.view.php';
-//require_once './app/helpers/auth.helper.php'; acomodar despues
-
+require_once './app/helpers/autenticacion.helper.php';
 class controladorIndividuos{
     private $modelo;
     private $vista;
 
     public function __construct() {
-        //AuthHelper::verify();          //ACOMODAR JUNTO AL REQUIRE
+        AutenticacionHelper::verify();
                                                     
         $this->modelo = new modeloIndividuos();
         $this->vista = new vistaIndividuos();
     }
 
-    public function mostrarIndividuos_control() { //ponerle distinto nombre
-        // obtengo tareas del controlador
+    public function mostrarIndividuos_control() { 
         $individuos = $this->modelo->obtenerIndividuos();
-        
-        // muestro las tareas desde la vista
+
         $this->vista->mostrarIndividuos($individuos);
     }
 
@@ -62,7 +59,6 @@ class controladorIndividuos{
     }
 
     function modificarDatos() {
-        // ACA HABRIA QUE HACER UNA VALIDACION DE LOS DATOS, PARA CHEQUEAR QUE LOS CAMPOS NO VENGAN VACIOS O CON DATOS ERRONEOS.
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $id = $_POST['id'];
             $nombre = $_POST['nombre'];
