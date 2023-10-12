@@ -1,8 +1,9 @@
 <?php
 require_once './app/controllers/individuos.controller.php';
-require_once './app/controllers/categoriasController.php';
+require_once './app/controllers/categorias.controller.php';
+require_once './app/controllers/autenticacion.controller.php';
 
- define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
+define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
 $action = 'individuos';
 if (!empty( $_GET['action'])) {
@@ -65,6 +66,18 @@ switch ($params[0]) {
     case 'modificarEspecies':
         $controller = new categoriasController();
         $controller-> modificarDatosEspecie();
+        break;
+    case 'login':
+        $controller = new autenticacionController();
+        $controller->mostrarLogin_control(); 
+        break;
+    case 'autenticar':
+        $controller = new autenticacionController();
+        $controller->autenticar();
+        break;
+    case 'logout':
+        $controller = new autenticacionController();
+        $controller->logout();
         break;
     default: 
         echo "404 Page Not Found";
