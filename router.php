@@ -4,7 +4,7 @@ require_once './app/controllers/categoriasController.php';
 
  define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
-$action = 'listarIndividuos';
+$action = 'individuos';
 if (!empty( $_GET['action'])) {
     $action = $_GET['action'];
 }
@@ -18,7 +18,7 @@ if (!empty( $_GET['action'])) {
 $params = explode('/', $action);
 
 switch ($params[0]) {
-    case 'listarIndividuos':
+    case 'individuos':
         $controller = new controladorIndividuos();
         $controller-> mostrarIndividuos_control();
         break;
@@ -30,11 +30,11 @@ switch ($params[0]) {
         $controller = new controladorIndividuos();
         $controller-> eliminarIndividuo($params[1]);
         break;
-    case 'mostrarIndividuo':
+    case 'individuo':
         $controller = new controladorIndividuos();
         $controller-> mostrarIndividuoEnDetalle_control($params[1]);
         break;
-    case 'mostrarParaModificarIndividuo':
+    case 'individuoAModificar':
         $controller = new controladorIndividuos();
         $controller-> mostrarIndividuoAModificar_control($params[1]);
         break;
@@ -42,7 +42,7 @@ switch ($params[0]) {
         $controller = new controladorIndividuos();
         $controller-> modificarDatos();
         break;
-    case 'listarEspecies':
+    case 'especies':
         $controller = new categoriasController();
         $controller-> mostrarCategorias();
         break;
@@ -58,7 +58,7 @@ switch ($params[0]) {
         $controller = new categoriasController();
         $controller-> seleccionarEspecie($params[1]);
         break;
-    case 'mostrarParaModificarEspecies':
+    case 'especieAModificar':
         $controller = new categoriasController();
         $controller-> mostrarEspecieAModificar_control($params[1]);
         break;
