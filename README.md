@@ -2,13 +2,12 @@
 
 Integrantes: 
 
-Magiorano Aguilar, Joaquin. joacopirovano@gmail.com
+Integrante A: Magiorano Aguilar, Joaquin. joacopirovano@gmail.com
 
-Salas Costa, Luna Bianca. lsalascosta@alumnos.exa.unicen.edu.ar
+integrante B: Salas Costa, Luna Bianca. lsalascosta@alumnos.exa.unicen.edu.ar
 
 Tematica:
-Veterinaria.
-
+Veterinaria de adopción.
 
 Descripcion:
 
