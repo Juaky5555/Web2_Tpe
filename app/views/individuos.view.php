@@ -1,9 +1,7 @@
 <?php
 
 class vistaIndividuos{
-    public function mostrarIndividuos($individuos){
-       // $cuenta = count($individuos);
-
+    public function mostrarIndividuos($individuos, $especies){
         require 'templates/listaIndividuos.phtml';
     }
 
