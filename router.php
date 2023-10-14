@@ -3,18 +3,12 @@ require_once './app/controllers/individuos.controller.php';
 require_once './app/controllers/categorias.controller.php';
 require_once './app/controllers/autenticacion.controller.php';
 
-define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
+define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
 $action = 'individuos';
 if (!empty( $_GET['action'])) {
     $action = $_GET['action'];
 }
-
-// mostrar    ->    mostrarIndividuos();
-// agregar   ->    añadirIndividuo();
-// eliminar/:id  -> eliminarIndividuo($id);
-// individuo/:id -> mostrarEnDetalle($id);
-// mostrarParaModificar/:id ->mostrarIndividuoModificar($id);
 
 $params = explode('/', $action);
 
@@ -83,18 +77,3 @@ switch ($params[0]) {
         echo "404 Page Not Found";
         break;
 }
-
-// class Router{
-//     public static $ACTION = "action";
-//     public static $PARAMS = "params";
-//     public static $ACTIONS = [
-//         'individuos' => 'mostrarIndividuos',
-//         'especies' => "mostrarEspecies",
-//         'sumar' => 'sumarIndividuo',
-//         'eliminar' => 'eliminarIndividuo',
-//         'mostrar' => 'mostrarIndividuoEnDetalle',
-//         'modificar' => 'modificarDatos'
-    
-//     ];
-// }
-
