@@ -26,7 +26,6 @@ class autenticacionController {
         }
 
         $usuario = $this->modelo->obtenerUsuarioPorEmail($email);
-        //$hash = password_hash($usuario->password, PASSWORD_DEFAULT);
 
         if ($usuario && password_verify($password, $usuario->password)) {
             AutenticacionHelper::login($usuario);

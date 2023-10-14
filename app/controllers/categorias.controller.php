@@ -1,8 +1,8 @@
 <?php
-include_once './app/views/categorias.view.php';
-include_once './app/models/categorias.model.php';
+require_once './app/views/categorias.view.php';
+require_once './app/models/categorias.model.php';
 require_once './app/helpers/autenticacion.helper.php';
-require_once './app/models/individuos.model.php';
+
 
 class categoriasController{ 
     private $modelo;
@@ -10,7 +10,8 @@ class categoriasController{
     private $modeloIndividuo;
     
     public function __construct() {
-        AutenticacionHelper::verify();                                      
+        //AutenticacionHelper::verify();
+        AutenticacionHelper::inicializar();                                
         $this->modelo = new modeloCategorias();
         $this->modeloIndividuo = new modeloIndividuos();
         $this->vista = new vistaCategorias();
@@ -46,10 +47,9 @@ class categoriasController{
     }
 
     public function mostrarEspecieEspecifica_control($id_especie){
-        $especies = $this->modeloIndividuo->obtenerIndividuosPorEspecie($id_especie);
-        $this->vista->mostrarEspecieEspecifica($especies);
+        $individuos = $this->modeloIndividuo->obtenerIndividuosPorEspecie($id_especie);
+        $this->vista->mostrarEspecieEspecifica($individuos);
     }
-    
 
     function modificarDatosEspecie() {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {

@@ -5,18 +5,20 @@ require_once './app/helpers/autenticacion.helper.php';
 class controladorIndividuos{
     private $modelo;
     private $vista;
+    private $modeloEspecies;
 
     public function __construct() {
-        AutenticacionHelper::verify();
-                                                    
+        //AutenticacionHelper::verify();
+        AutenticacionHelper::inicializar();                                 
         $this->modelo = new modeloIndividuos();
         $this->vista = new vistaIndividuos();
+        $this->modeloEspecies = new modeloCategorias();
     }
 
     public function mostrarIndividuos_control() { 
         $individuos = $this->modelo->obtenerIndividuos();
-
-        $this->vista->mostrarIndividuos($individuos);
+        $especies = $this->modeloEspecies->obtenerCategorias();
+        $this->vista->mostrarIndividuos($individuos, $especies);
     }
 
     public function mostrarIndividuoEnDetalle_control($id){
