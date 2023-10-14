@@ -19,11 +19,14 @@ class AutenticacionHelper {
         session_destroy();
     }
 
-    public static function verify() {
+
+    //FUNCION QUE PODRIA VERIFICAR SIEMPRE QUE SE LOGUEEN ANTES DE ENTRAR
+    
+    /*public static function verify() {
         AutenticacionHelper::inicializar();
         if (!isset($_SESSION['USER_ID'])) {
             header('Location: ' . BASE_URL . 'login');
             die();
         }
-    }
+    }*/
 }
