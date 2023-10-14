@@ -1,6 +1,9 @@
 <?php 
     require 'templates/header.phtml';
-    require 'templates/form_subida_individuos.phtml'; 
+    if (isset($_SESSION['USER_ID'])){
+        require 'templates/form_subida_individuos.phtml';
+    }
+     
 ?>
 
 <ul class="list-group">
@@ -13,9 +16,11 @@
             <h6>Edad (años): <?= $individuo->edad ?></h6>
         </div>
         <div class="actions">
-            <a href="individuo/<?= $individuo->id?>" type="button" class='btn btn-success ml-auto'>Ver mas</a> 
-            <a href="eliminarIndividuo/<?= $individuo->id ?>" type="button" class='btn btn-danger ml-auto'>Borrar</a> 
+            <a href="individuo/<?= $individuo->id?>" type="button" class='btn btn-success ml-auto'>Ver mas</a>
+            <?php if (isset($_SESSION['USER_ID'])) : ?>
             <a href="individuoAModificar/<?= $individuo->id ?>" type="button" class='btn btn-secondary ml-auto'>Modificar</a>
+            <a href="eliminarIndividuo/<?= $individuo->id ?>" type="button" class='btn btn-danger ml-auto'>Borrar</a>
+            <?php endif ?>
         </div>
     </li>
 <?php endforeach ?>

@@ -1,21 +1,25 @@
 <?php 
     require 'templates/header.phtml';
-    require 'templates/form_subida_individuos.phtml'; 
+    if (isset($_SESSION['USER_ID'])){
+        require 'templates/form_subida_individuos.phtml';
+    } 
 ?>
 
 <ul class="list-group">
-<?php foreach($categorias as $individuo) : ?>
+<?php foreach($individuos as $individuo) : ?>
     <li class="list-group-item item-task">
-        <div>
-            <h5><b>Especie: <?= $individuo->especie ?></b></h5>
-            <h6>Nombre: <?= $individuo->nombre ?></h6> 
+        <div class="col-9">
+            <h5><b>Nombre: <?= $individuo->nombre ?></b></h5>
+            <h6>Especie: <?= $individuo->especie ?></h6> 
             <h6>Color: <?= $individuo->color ?></h6>
             <h6>Edad (años): <?= $individuo->edad ?></h6>
         </div>
         <div class="actions">
-            <a href="individuo/<?= $individuo->id?>" type="button" class='btn btn-success ml-auto'>Ver mas</a> 
+            <a href="individuo/<?= $individuo->id?>" type="button" class='btn btn-success ml-auto'>Ver mas</a>
+            <?php if (isset($_SESSION['USER_ID'])) : ?>
             <a href="eliminarIndividuo/<?= $individuo->id ?>" type="button" class='btn btn-danger ml-auto'>Borrar</a> 
             <a href="individuoAModificar/<?= $individuo->id ?>" type="button" class='btn btn-secondary ml-auto'>Modificar</a>
+            <?php endif ?>
         </div>
     </li>
 <?php endforeach ?>
