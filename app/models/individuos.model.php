@@ -37,4 +37,10 @@ class modeloIndividuos{
         $query = $this->db->prepare('UPDATE individuos SET nombre = ?, raza = ?, edad = ?, color = ?, personalidad = ?, fk_id_especie = ? WHERE id = ?');
         $query->execute([$nombre, $raza, $edad, $color, $personalidad, $fk_id_especie, $id]);
     }
+
+    function obtenerIndividuosPorEspecie($id_especie){
+        $query= $this->db->prepare('SELECT * FROM individuos i JOIN especies e ON e.id_especie = i.fk_id_especie WHERE fk_id_especie = ?');
+        $query->execute([$id_especie]);
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
 }

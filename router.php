@@ -47,17 +47,17 @@ switch ($params[0]) {
         $controller = new categoriasController();
         $controller-> mostrarCategorias();
         break;
-    case 'agregarEspecies':
+    case 'sumarEspecie':
         $controller = new categoriasController();
         $controller-> sumarEspecie();
         break;
-    case 'eliminarEspecies':
+    case 'borrarCategoria':
         $controller = new categoriasController();
-        $controller-> eliminarEspecie($params[1]);
+        $controller-> borrarCategoria($params[1]);
         break;
-    case 'mostrarEspecies':
+    case 'mostrarespecie':
         $controller = new categoriasController();
-        $controller-> seleccionarEspecie($params[1]);
+        $controller-> mostrarEspecieEspecifica_control($params[1]);
         break;
     case 'especieAModificar':
         $controller = new categoriasController();

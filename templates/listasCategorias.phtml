@@ -11,8 +11,8 @@
             <h6>Descripcion: <?= $categoria->descripcion ?></h6>
         </div>
         <div class="actions">
-            <!-- <a href="listarPorCategoria/<?= $categoria->id_especie?>" type="button" class='btn btn-success ml-auto'>Ver mas</a>  -->
-            <a href="eliminarEspecies/<?= $categoria->id_especie ?>" type="button" class='btn btn-danger ml-auto'>Borrar</a> 
+            <a href="mostrarespecie/<?= $categoria->id_especie?>" type="button" class='btn btn-success ml-auto'>Ver mas</a> 
+            <a href="borrarCategoria/<?= $categoria->id_especie ?>" type="button" class='btn btn-danger ml-auto'>Borrar</a> 
             <a href="especieAModificar/<?= $categoria->id_especie ?>" type="button" class='btn btn-secondary ml-auto'>Modificar</a>
         </div>
     </li>

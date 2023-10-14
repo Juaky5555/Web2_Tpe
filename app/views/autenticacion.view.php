@@ -5,3 +5,5 @@ class vistaAutenticacion {
         require './templates/login.phtml';
     }
 }
+
+?>

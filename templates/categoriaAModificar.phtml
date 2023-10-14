@@ -1,14 +1,15 @@
-<?php include_once 'templates/header.phtml';?>
+<?php include_once 'templates/header.phtml';
 
+?>
 <form action="modificarEspecies" method="POST" class="my-4">
     <div class="oculto">
-        <input type="number" name="id" value="<?= $especie->id?>"/>
+        <input type="number" name="id_especie" value="<?=$categoria->id_especie?>"/>
     </div>
     <div class="row">
         <div class="col-6">
             <div class="form-group">
                 <label>Especie</label>
-                <input required name="nombre" type="text" class="form-control" value="<?= $especie->especie?>"/>
+                <input required name="especie" type="text" class="form-control" value="<?=$categoria->especie?>"/>
             </div>
         </div>
     </div>
@@ -16,7 +17,7 @@
         <div class="col-6">
             <div class="form-group">
                 <label>Descripcion</label>
-                <input required name="raza" type="text" class="form-control" value="<?= $especie->descripcion?>"/>
+                <input required name="descripcion" type="text" class="form-control" value="<?=$categoria->descripcion?>"/>
             </div>
         </div>
     </div>

@@ -1,15 +1,30 @@
-<?php require 'templates/header.phtml'; ?>
+<?php 
+    require 'templates/header.phtml';
+    require 'templates/form_subida_individuos.phtml'; 
+?>
 
-<main class="container mt-5">
-    <section>
-        <h1 class="mb-5">Especie: <?= $especie->nombre ?></h1>
-
-        <p class="lead mt-3">Nombre: <?= $especie->especie ?></p>
-        <p class="lead mt-3">Raza: <?= $especie->raza ?></p>
-        <p class="lead mt-3">Edad (años): <?= $especie->edad ?></p>
-        <p class="lead mt-3">Descripcion del individuo: <?= $especie->personalidad ?></p>
-        <p class="lead mt-3">Descripcion de la especie: <?= $especie->descripcion ?></p>
-    </section>
-</main>
+<ul class="list-group">
+<?php foreach($categorias as $individuo) : ?>
+    <li class="list-group-item item-task">
+        <div>
+            <h5><b>Especie: <?= $individuo->especie ?></b></h5>
+            <h6>Nombre: <?= $individuo->nombre ?></h6> 
+            <h6>Color: <?= $individuo->color ?></h6>
+            <h6>Edad (años): <?= $individuo->edad ?></h6>
+        </div>
+        <div class="actions">
+            <a href="individuo/<?= $individuo->id?>" type="button" class='btn btn-success ml-auto'>Ver mas</a> 
+            <a href="eliminarIndividuo/<?= $individuo->id ?>" type="button" class='btn btn-danger ml-auto'>Borrar</a> 
+            <a href="individuoAModificar/<?= $individuo->id ?>" type="button" class='btn btn-secondary ml-auto'>Modificar</a>
+        </div>
+    </li>
+<?php endforeach ?>
+</ul>
 
 <?php require 'templates/footer.phtml'; ?>
+
+
+
+
+
+
