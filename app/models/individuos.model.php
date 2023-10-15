@@ -1,10 +1,30 @@
 <?php
+include_once './config/config.php';
 
 class modeloIndividuos{
-    private $db;
+    protected $db;
 
-    function __construct() {
-        $this->db = new PDO('mysql:host=localhost;dbname=db_veterinaria;charset=utf8', 'root', '');
+    public function __construct() {
+        $this->db = new PDO(
+        "mysql:host=".DB_HOST
+        // .";dbname=".DB_NAME
+        .";charset=utf8", 
+        DB_USER, DB_PASS);
+        $this->db->query("CREATE DATABASE IF NOT EXISTS db_veterinaria");
+       // $this->db->query("USE 'db_veterinaria'");
+        $this->deploy();
+    }
+    private function deploy() {
+        $query = $this->db->prepare('SELECT * FROM individuos JOIN especies ON individuos.fk_id_especie = especies.id_especie');
+        $query->execute();
+        $individuo = $query->fetchAll(PDO::FETCH_OBJ);
+        if(count($individuo) == 0) {
+            $archivoExportacion = './sql/db_veterinaria.sql';
+            
+            $comando = "mysql -u ". DB_USER ." -p " . DB_NAME ." < $archivoExportacion";
+            
+            exec($comando);
+        }
     }
 
     function obtenerIndividuos() {
