@@ -15,10 +15,9 @@
             <div class="form-group">
                 <label>Especie</label>
                 <select required name="especie" class="form-control">
-                    <option value="" selected disabled >Seleccione una opcion</option>
-                    <option value="1">Perro</option>
-                    <option value="2">Gato</option>
-                    <option value="3">Roedor</option>
+                    <?php foreach($especies as $especie) : ?>
+                    <option value="<?= $especie->id_especie ?>"><?= $especie->especie?></option>
+                    <?php endforeach ?>
                 </select>
             </div>
         </div>
