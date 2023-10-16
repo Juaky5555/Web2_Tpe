@@ -10,7 +10,6 @@ class categoriasController{
     private $modeloIndividuo;
     
     public function __construct() {
-        //AutenticacionHelper::verify();
         AutenticacionHelper::inicializar();                                
         $this->modelo = new modeloCategorias();
         $this->modeloIndividuo = new modeloIndividuos();

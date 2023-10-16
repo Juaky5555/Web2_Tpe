@@ -8,7 +8,6 @@ class controladorIndividuos{
     private $modeloEspecies;
 
     public function __construct() {
-        //AutenticacionHelper::verify();
         AutenticacionHelper::inicializar();                                 
         $this->modelo = new modeloIndividuos();
         $this->vista = new vistaIndividuos();
