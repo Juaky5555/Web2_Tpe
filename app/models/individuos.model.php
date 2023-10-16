@@ -3,30 +3,26 @@ include_once './config/config.php';
 
 class modeloIndividuos{
     protected $db;
-
     public function __construct() {
         $this->db = new PDO(
         "mysql:host=".DB_HOST
-        // .";dbname=".DB_NAME
         .";charset=utf8", 
         DB_USER, DB_PASS);
         $this->db->query("CREATE DATABASE IF NOT EXISTS db_veterinaria");
-       // $this->db->query("USE 'db_veterinaria'");
-        $this->deploy();
-    }
-    private function deploy() {
-        $query = $this->db->prepare('SELECT * FROM individuos JOIN especies ON individuos.fk_id_especie = especies.id_especie');
-        $query->execute();
-        $individuo = $query->fetchAll(PDO::FETCH_OBJ);
-        if(count($individuo) == 0) {
-            $archivoExportacion = './sql/db_veterinaria.sql';
-            
-            $comando = "mysql -u ". DB_USER ." -p " . DB_NAME ." < $archivoExportacion";
-            
-            exec($comando);
-        }
+        $this->db->query("USE db_veterinaria");
+        $this->_deploy();
     }
 
+    public function _deploy() {
+        $query = $this->db->query('SHOW TABLES');
+        $tables = $query->fetchAll();
+        if(count($tables) == 0) {
+            // Se accede a una version del sql sin imagenes, porque la version con imagenes es demasiado pesada
+            $sql = file_get_contents("./sql/db_veterinaria_sin_imagenes.sql");
+            $this->db->query($sql);
+        }
+    }
+    
     function obtenerIndividuos() {
         $query = $this->db->prepare('SELECT * FROM individuos JOIN especies ON individuos.fk_id_especie = especies.id_especie');
         $query->execute();

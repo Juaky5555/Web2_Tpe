@@ -1,35 +1,28 @@
 <?php
 include_once './config/config.php';
-class modeloUsuarios {
-    protected $db;
 
+class modeloUsuarios{
+    protected $db;
     public function __construct() {
         $this->db = new PDO(
-            "mysql:host=".DB_HOST .
-            ";dbname=".DB_NAME.";charset=utf8", 
-            DB_USER, DB_PASS);
-
-        $this->deploy();
+        "mysql:host=".DB_HOST
+        .";charset=utf8", 
+        DB_USER, DB_PASS);
+        $this->db->query("CREATE DATABASE IF NOT EXISTS db_veterinaria");
+        $this->db->query("USE db_veterinaria");
+        $this->_deploy();
     }
 
-    private function deploy() {
-        // Consulta para verificar si la tabla de usuarios existe
-        $query = $this->db->prepare('SELECT COUNT(*) FROM usuarios');
-        $query->execute();
-        $count = $query->fetchColumn();
-
-        // Si la tabla de usuarios no tiene datos, intentamos importarla desde el archivo SQL
-        if ($count === false || $count == 0) {
-            $archivoExportacion = './sql/db_veterinaria.sql';
-
-            $comando = "mysql -u ". DB_USER ." -p" . DB_PASS . " " . DB_NAME ." < $archivoExportacion";
-
-            exec($comando);
+    public function _deploy() {
+        $query = $this->db->query('SHOW TABLES');
+        $tables = $query->fetchAll();
+        if(count($tables) == 0) {
+            // Se accede a una version del sql sin imagenes, porque la version con imagenes es demasiado pesada
+            $sql = file_get_contents("./sql/db_veterinaria_sin_imagenes.sql");
+            $this->db->query($sql);
         }
     }
-
-
-
+    
     public function obtenerUsuarioPorEmail($email) {
         $query = $this->db->prepare('SELECT * FROM usuarios WHERE email = ?'); 
         $query->execute([$email]);
