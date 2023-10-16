@@ -1,13 +1,11 @@
 <?php
 include_once './config/config.php';
+
 class modeloUsuarios {
     protected $db;
 
     public function __construct() {
-        $this->db = new PDO(
-            "mysql:host=".DB_HOST .
-            ";dbname=".DB_NAME.";charset=utf8", 
-            DB_USER, DB_PASS);
+        $this->db = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8", DB_USER, DB_PASS);
 
         $this->deploy();
     }
@@ -27,8 +25,6 @@ class modeloUsuarios {
             exec($comando);
         }
     }
-
-
 
     public function obtenerUsuarioPorEmail($email) {
         $query = $this->db->prepare('SELECT * FROM usuarios WHERE email = ?'); 

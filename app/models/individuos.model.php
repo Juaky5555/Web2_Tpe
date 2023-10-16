@@ -3,15 +3,11 @@ include_once './config/config.php';
 
 class modeloIndividuos{
     protected $db;
-
+    
     public function __construct() {
-        $this->db = new PDO(
-        "mysql:host=".DB_HOST
-        // .";dbname=".DB_NAME
-        .";charset=utf8", 
-        DB_USER, DB_PASS);
+        $this->db = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8", DB_USER, DB_PASS);
         $this->db->query("CREATE DATABASE IF NOT EXISTS db_veterinaria");
-       // $this->db->query("USE 'db_veterinaria'");
+        //$this->db->query("USE 'db_veterinaria'");
         $this->deploy();
     }
     private function deploy() {
