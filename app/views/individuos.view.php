@@ -9,7 +9,7 @@ class vistaIndividuos{
         require 'templates/individuoEnDetalle.phtml';
     }
 
-    public function mostrarIndividuoAModificar($animal){
+    public function mostrarIndividuoAModificar($animal, $especies){
         require 'templates/individuoAModificar.phtml';
     }
 

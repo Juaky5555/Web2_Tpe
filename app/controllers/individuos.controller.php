@@ -29,8 +29,8 @@ class controladorIndividuos{
 
     public function mostrarIndividuoAModificar_control($id){
         $animal = $this->modelo->obtenerIndividuoPorID($id);
-        
-        $this->vista->mostrarIndividuoAModificar($animal);
+        $especies = $this->modeloEspecies->obtenerCategorias();
+        $this->vista->mostrarIndividuoAModificar($animal, $especies);
     }
 
     public function sumarIndividuo() {
