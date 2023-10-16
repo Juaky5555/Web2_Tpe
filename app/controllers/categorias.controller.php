@@ -17,7 +17,7 @@ class categoriasController{
         $this->vista = new vistaCategorias();
     }
 
-    public function mostrarCategorias(){
+    public function mostrarCategorias_control(){
         $especie = $this->modelo->obtenerCategorias();   
         $this->vista->mostrarCategorias($especie);
     }
@@ -48,7 +48,8 @@ class categoriasController{
 
     public function mostrarEspecieEspecifica_control($id_especie){
         $individuos = $this->modeloIndividuo->obtenerIndividuosPorEspecie($id_especie);
-        $this->vista->mostrarEspecieEspecifica($individuos);
+        $especies = $this->modelo->obtenerCategorias();
+        $this->vista->mostrarEspecieEspecifica($individuos, $especies);
     }
 
     function modificarDatosEspecie() {
