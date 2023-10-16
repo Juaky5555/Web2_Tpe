@@ -5,5 +5,4 @@ define('DB_NAME', 'db_veterinaria');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 
-
 ?>

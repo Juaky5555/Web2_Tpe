@@ -6,7 +6,7 @@ class vistaCategorias{
         require_once 'templates/listasCategorias.phtml';
     }
 
-    public function mostrarEspecieEspecifica($individuos){
+    public function mostrarEspecieEspecifica($individuos, $especies){
         require 'templates/mostrarEspecieEspecifica.phtml';
     }
     

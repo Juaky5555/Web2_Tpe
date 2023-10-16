@@ -39,7 +39,7 @@ switch ($params[0]) {
         break;
     case 'especies':
         $controller = new categoriasController();
-        $controller-> mostrarCategorias();
+        $controller-> mostrarCategorias_control();
         break;
     case 'sumarEspecie':
         $controller = new categoriasController();
