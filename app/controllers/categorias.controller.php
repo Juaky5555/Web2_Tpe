@@ -17,8 +17,8 @@ class categoriasController{
     }
 
     public function mostrarCategorias_control(){
-        $especie = $this->modelo->obtenerCategorias();   
-        $this->vista->mostrarCategorias($especie);
+        $especies = $this->modelo->obtenerCategorias();   
+        $this->vista->mostrarCategorias($especies);
     }
 
     public function mostrarEspecieAModificar_control($id_especie){
@@ -72,7 +72,21 @@ class categoriasController{
     }
 
     function borrarCategoria($id_especie) {
-        $this->modelo->borrarCategoria($id_especie);
-        header('Location: ' . BASE_URL . 'especies');
+        $individuos = $this->modeloIndividuo->obtenerIndividuosPorEspecie($id_especie);
+        $i = count($individuos);
+        if ($i != 0) {
+            foreach($individuos as $individuo){
+                if ($individuo->fk_id_especie != $id_especie) {
+                    $i = $i-1;
+                }
+                
+            }
+        }
+        if ($i == 0) {
+            $this->modelo->borrarCategoria($id_especie);
+            header('Location: ' . BASE_URL . 'especies');
+        } else {
+            $this->vista->showError("No se puede borrar la categoria/especie ya que posee items/individuos");
+        }
     }
 }
