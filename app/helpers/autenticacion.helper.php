@@ -11,7 +11,7 @@ class AutenticacionHelper {
     public static function login($user) {
         AutenticacionHelper::inicializar();
         $_SESSION['USER_ID'] = $user->id_usuario;
-        $_SESSION['USER_EMAIL'] = $user->email;
+        $_SESSION['USER_NAME'] = $user->usuario;
     }
 
     public static function logout() {
