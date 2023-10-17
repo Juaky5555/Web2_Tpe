@@ -18,8 +18,8 @@
         <div class="actions">
             <a href="individuo/<?= $individuo->id?>" type="button" class='btn btn-success ml-auto'>Ver mas</a>
             <?php if (isset($_SESSION['USER_ID'])) : ?>
-            <a href="eliminarIndividuo/<?= $individuo->id ?>" type="button" class='btn btn-danger ml-auto'>Borrar</a> 
             <a href="individuoAModificar/<?= $individuo->id ?>" type="button" class='btn btn-secondary ml-auto'>Modificar</a>
+            <a href="eliminarIndividuo/<?= $individuo->id ?>" type="button" class='btn btn-danger ml-auto'>Borrar</a>
             <?php endif ?>
         </div>
     </li>
@@ -27,9 +27,3 @@
 </ul>
 
 <?php require 'templates/footer.phtml'; ?>
-
-
-
-
-
-
