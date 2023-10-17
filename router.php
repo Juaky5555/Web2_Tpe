@@ -45,11 +45,11 @@ switch ($params[0]) {
         $controller = new categoriasController();
         $controller-> sumarEspecie();
         break;
-    case 'borrarCategoria':
+    case 'borrarEspecie':
         $controller = new categoriasController();
         $controller-> borrarCategoria($params[1]);
         break;
-    case 'mostrarespecie':
+    case 'especie':
         $controller = new categoriasController();
         $controller-> mostrarEspecieEspecifica_control($params[1]);
         break;
