@@ -23,9 +23,9 @@ class modeloUsuarios{
         }
     }
     
-    public function obtenerUsuarioPorEmail($email) {
-        $query = $this->db->prepare('SELECT * FROM usuarios WHERE email = ?'); 
-        $query->execute([$email]);
+    public function obtenerUsuarioPorNombre($usser) {
+        $query = $this->db->prepare('SELECT * FROM usuarios WHERE usuario = ?'); 
+        $query->execute([$usser]);
         $usuario = $query->fetch(PDO::FETCH_OBJ);
         return $usuario;
     }

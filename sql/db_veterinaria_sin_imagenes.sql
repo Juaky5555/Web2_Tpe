@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-10-2023 a las 01:02:05
+-- Tiempo de generación: 17-10-2023 a las 20:47:44
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -64,16 +64,11 @@ CREATE TABLE `individuos` (
 --
 
 INSERT INTO `individuos` (`id`, `nombre`, `raza`, `edad`, `color`, `personalidad`, `fk_id_especie`, `imagen`) VALUES
-(1, 'Chicho', 'Bobtail', 8, 'Blanco y Gris', 'Los bobtails, tan alegres y extrovertidos, son un compañero muy popular para las familias. Suelen ser de naturaleza adorable, aunque pueden ponerse nerviosos cuando juegan, por lo que deberás tener cuidado cuando haya niños pequeños cerca. Se unirán a cualquier actividad con mucho entusiasmo.', 1, '');
-INSERT INTO `individuos` (`id`, `nombre`, `raza`, `edad`, `color`, `personalidad`, `fk_id_especie`, `imagen`) VALUES
-(2, 'Flopi', 'Akita', 5, 'Marron', 'Flopi es dócil, activa e independiente. Su cualidad más admirable es la lealtad, se siente muy apegada a su dueño y es desconfiada con los extraños, actitud que le hace ser muy buena guardiana.', 1, '');
-INSERT INTO `individuos` (`id`, `nombre`, `raza`, `edad`, `color`, `personalidad`, `fk_id_especie`, `imagen`) VALUES
-(3, 'Taiga', 'Bengali', 2, 'Marron y Negro', 'Taiga muestra seguridad y confianza en sí misma y, además, es cariñosa. Es muy juguetona por naturaleza y rebosa energía. Es lista y parece que mira todo lo que la rodea, incluido al perro de la familia.', 2, '');
-INSERT INTO `individuos` (`id`, `nombre`, `raza`, `edad`, `color`, `personalidad`, `fk_id_especie`, `imagen`) VALUES
-(4, 'Tanque', 'Maine coon', 5, 'Gris', 'Tanque es muy amigable y sociable. En caso de ser el único gato de la casa, ve a requerir mucha atención humana. Además, es  muy charlatan, es decir, sus arrullos y maullidos te acompañarán durante todo el día. Es muy afable y tolerante con otros animales y con los niños.', 2, '');
-INSERT INTO `individuos` (`id`, `nombre`, `raza`, `edad`, `color`, `personalidad`, `fk_id_especie`, `imagen`) VALUES
-(5, 'Pelusa', 'Cobaya peruana', 1, 'Crema', 'Pelusa se caracteriza por su personalidad cariñosa y dócil. Tiene un marcado instinto de exploración, ya que es muy curioso y atento.', 3, '');
-INSERT INTO `individuos` (`id`, `nombre`, `raza`, `edad`, `color`, `personalidad`, `fk_id_especie`, `imagen`) VALUES
+(1, 'Chicho', 'Bobtail', 8, 'Blanco y Gris', 'Los bobtails, tan alegres y extrovertidos, son un compañero muy popular para las familias. Suelen ser de naturaleza adorable, aunque pueden ponerse nerviosos cuando juegan, por lo que deberás tener cuidado cuando haya niños pequeños cerca. Se unirán a cualquier actividad con mucho entusiasmo.', 1, ''),
+(2, 'Flopi', 'Akita', 5, 'Marron', 'Flopi es dócil, activa e independiente. Su cualidad más admirable es la lealtad, se siente muy apegada a su dueño y es desconfiada con los extraños, actitud que le hace ser muy buena guardiana.', 1, ''),
+(3, 'Taiga', 'Bengali', 2, 'Marron y Negro', 'Taiga muestra seguridad y confianza en sí misma y, además, es cariñosa. Es muy juguetona por naturaleza y rebosa energía. Es lista y parece que mira todo lo que la rodea, incluido al perro de la familia.', 2, ''),
+(4, 'Tanque', 'Maine coon', 5, 'Gris', 'Tanque es muy amigable y sociable. En caso de ser el único gato de la casa, ve a requerir mucha atención humana. Además, es  muy charlatan, es decir, sus arrullos y maullidos te acompañarán durante todo el día. Es muy afable y tolerante con otros animales y con los niños.', 2, ''),
+(5, 'Pelusa', 'Cobaya peruana', 1, 'Crema', 'Pelusa se caracteriza por su personalidad cariñosa y dócil. Tiene un marcado instinto de exploración, ya que es muy curioso y atento.', 3, ''),
 (6, 'Chanchi', 'Cobaya skinny', 1, 'Marron', 'El comportamiento de Chanchi es dócil y noble en general, cuando se sienten muy a gusto y felices te lo hará saber, pero cuando no también, esto es debido a que tiene un sistema de comunicación bastante amplio, lo que nos permite saber su estado de ánimo.', 3, '');
 
 -- --------------------------------------------------------
@@ -84,7 +79,7 @@ INSERT INTO `individuos` (`id`, `nombre`, `raza`, `edad`, `color`, `personalidad
 
 CREATE TABLE `usuarios` (
   `id_usuario` int(11) NOT NULL,
-  `email` varchar(128) NOT NULL,
+  `usuario` varchar(128) NOT NULL,
   `password` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -92,9 +87,9 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id_usuario`, `email`, `password`) VALUES
-(1, 'test@gmail.com', '$2y$10$RzRrWpGSKJcEh/0y.lUCHOtlCPXv6e7jpeL5DqU5LTgZGLEOkmX3u'),
-(2, 'webadmin@gmail.com', '$2y$10$Ph6By5dNH7rcCwhXPjqm/.Hcz4WaCFgb35ya7bYw6w.o.oR3X5MCm');
+INSERT INTO `usuarios` (`id_usuario`, `usuario`, `password`) VALUES
+(1, 'test', '$2y$10$RzRrWpGSKJcEh/0y.lUCHOtlCPXv6e7jpeL5DqU5LTgZGLEOkmX3u'),
+(2, 'webadmin', '$2y$10$Ph6By5dNH7rcCwhXPjqm/.Hcz4WaCFgb35ya7bYw6w.o.oR3X5MCm');
 
 --
 -- Índices para tablas volcadas
@@ -127,13 +122,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `especies`
 --
 ALTER TABLE `especies`
-  MODIFY `id_especie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_especie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `individuos`
 --
 ALTER TABLE `individuos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`

@@ -13,13 +13,12 @@
             <p>Descripcion: <?= $categoria->descripcion ?></p>
         </div>
         <div class="actions">
-            <a href="mostrarespecie/<?= $categoria->id_especie?>" type="button" class='btn btn-success ml-auto'>Ver <?= $categoria->especie ?></a>
+            <a href="especie/<?= $categoria->id_especie?>" type="button" class='btn btn-success ml-auto'>Ver animales</a>
             <?php if (isset($_SESSION['USER_ID'])) : ?>
             <a href="especieAModificar/<?= $categoria->id_especie ?>" type="button" class='btn btn-secondary ml-auto'>Modificar</a>
-            <a href="borrarCategoria/<?= $categoria->id_especie ?>" type="button" class='btn btn-danger ml-auto'>Borrar</a> 
+            <a href="borrarEspecie/<?= $categoria->id_especie ?>" type="button" class='btn btn-danger ml-auto'>Borrar</a> 
             <?php endif ?>
         </div>
-        
     </li>
 <?php endforeach ?>
 </ul>

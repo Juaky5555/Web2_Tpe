@@ -17,15 +17,15 @@ class autenticacionController {
     }
 
     public function autenticar() {
-        $email = $_POST['email'];
+        $usser = $_POST['name'];
         $password = $_POST['password'];
 
-        if (empty($email) || empty($password)) {
+        if (empty($usser) || empty($password)) {
             $this->vista->mostrarLogin('Faltan completar campos');
             return;
         }
 
-        $usuario = $this->modelo->obtenerUsuarioPorEmail($email);
+        $usuario = $this->modelo->obtenerUsuarioPorNombre($usser);
 
         if ($usuario && password_verify($password, $usuario->password)) {
             AutenticacionHelper::login($usuario);

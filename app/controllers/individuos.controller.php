@@ -8,7 +8,6 @@ class controladorIndividuos{
     private $modeloEspecies;
 
     public function __construct() {
-        //AutenticacionHelper::verify();
         AutenticacionHelper::inicializar();                                 
         $this->modelo = new modeloIndividuos();
         $this->vista = new vistaIndividuos();
@@ -29,8 +28,8 @@ class controladorIndividuos{
 
     public function mostrarIndividuoAModificar_control($id){
         $animal = $this->modelo->obtenerIndividuoPorID($id);
-        
-        $this->vista->mostrarIndividuoAModificar($animal);
+        $especies = $this->modeloEspecies->obtenerCategorias();
+        $this->vista->mostrarIndividuoAModificar($animal, $especies);
     }
 
     public function sumarIndividuo() {

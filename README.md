@@ -6,7 +6,7 @@ Integrante A: Magiorano Aguilar, Joaquin. joacopirovano@gmail.com
 
 integrante B: Salas Costa, Luna Bianca. lsalascosta@alumnos.exa.unicen.edu.ar
 
-Para loguearse como administrador: El usuario es "webadmin@gmail.com" y su contraseña es "admin".
+Para loguearse como administrador: El usuario es "webadmin" y su contraseña es "admin".
 Tematica:
 Veterinaria de adopción.
 
